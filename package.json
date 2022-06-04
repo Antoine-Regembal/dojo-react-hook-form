@@ -1,0 +1,33 @@
+{
+  "name": "dojo-react-hook-form",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "saas": "^1.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.30.0",
+    "jest-cucumber": "^3.0.1",
+    "jsdom": "^19.0.0",
+    "specflow-emulator": "^1.0.4",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9",
+    "vitest": "^0.13.1"
+  }
+}
