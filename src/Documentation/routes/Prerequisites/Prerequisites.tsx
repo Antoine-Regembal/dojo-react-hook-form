@@ -1,0 +1,1 @@
+export const Prerequisites = () => <p>prerequisites</p>;

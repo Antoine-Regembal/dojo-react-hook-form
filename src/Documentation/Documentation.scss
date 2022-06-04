@@ -1,0 +1,11 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+
+  &__list:not(:first-child) {
+    margin-left: 3rem;
+  }
+}
