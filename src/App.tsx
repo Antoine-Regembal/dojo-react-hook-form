@@ -3,9 +3,9 @@ import "./App.scss";
 
 export const App = () => (
 	<div className="grid">
-		<div className="area--documentation">
+		<div className="area area--documentation">
 			<Documentation/>
 		</div>
-		<div className="area--form">b</div>
+		<div className="area area--form">b</div>
 	</div>
 );

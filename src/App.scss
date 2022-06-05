@@ -1,12 +1,13 @@
 .grid {
   display: grid;
   width: 100%;
-  height: 100vh;
   grid-template-columns: 50% 50%;
-  overflow-y: scroll;
 }
 
 .area {
+  height: 100vh;
+  overflow-y: scroll;
+  
   &--documentation {
     background-color: lightgrey;
     padding: 0 1rem 0 1rem;
