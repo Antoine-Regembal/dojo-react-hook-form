@@ -1,0 +1,21 @@
+.form {
+  padding: 3rem 0 0 3rem;
+
+  &__input {
+    padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+  }
+  &__button {
+    margin-top: 3rem;
+    padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: .5rem;
+}
+.input-wrapper:not(:first-of-type) {
+  margin-top: 2rem;
+}
