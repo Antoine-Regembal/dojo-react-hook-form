@@ -5,6 +5,18 @@
   align-content: flex-start;
   align-items: center;
 
+  &__list__button {
+    cursor: pointer;
+    padding: 0.5rem;
+    text-transform: uppercase;
+
+    &--selected {
+      font-weight: bold;
+      border-color: dimgrey;
+      border-style: solid;
+      box-shadow: 1px 1px 1px 1px black;
+    }
+  }
   &__list:not(:first-child) {
     margin-left: 3rem;
   }
