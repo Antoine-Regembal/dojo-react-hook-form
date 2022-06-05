@@ -31,4 +31,17 @@ section > ul {
   li:not(:last-child) {
     margin-bottom: 0.5rem;
   }
+  li:not(:last-child)::after {
+    content: ",";
+  }
+  li:last-child::after {
+    content: ".";
+  }
+}
+
+.snippet {
+  background-color: black;
+  padding: 1rem;
+  color: white;
+  font-weight: bold;
 }

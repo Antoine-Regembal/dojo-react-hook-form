@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {Routes, Route, useNavigate } from "react-router-dom";
 
-import {Prerequisites} from "./routes/Prerequisites";
 import {DocumentationNav} from "./DocumentationNav";
+import {Prerequisites} from "./routes/Prerequisites";
+import {Subject} from "./routes/Subject";
 
 import { pagesLinks } from "./documentation.json";
 import "./Documentation.scss";
@@ -36,6 +37,7 @@ export const Documentation = () => {
 			<DocumentationNav onNavLinkClick={onNavLinkClick} pagesLinks={pagesLinks} />
 			<Routes>
 				<Route path={pagesLinks.prerequisites} element={<Prerequisites/>}/>
+				<Route path={pagesLinks.subject} element={<Subject/>}/>
 			</Routes>
 		</div>
 	);
