@@ -1,21 +1,44 @@
 .form {
   padding: 3rem 0 0 3rem;
 
+  &__label {
+    display: block;
+
+    &--required::after {
+      content: "*";
+      color: red;
+    }
+  }
   &__input {
+    display: block;
+    margin: 0.3em 0 0.3em 0;
     padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+
+    &--error {
+      color: red;
+      border-color: red;
+      border-style: solid;
+    }
   }
   &__button {
     margin-top: 3rem;
     padding: 0.3rem 0.8rem 0.3rem 0.8rem;
   }
+  &__error {
+    display: block;
+    color: red;
+  }
+  &--required::before {
+    content: "* required fields";
+    color: red;
+    font-size: small;
+  }
 }
 
-.input-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-  margin: .5rem;
-}
 .input-wrapper:not(:first-of-type) {
-  margin-top: 2rem;
+  margin-top: 2em;
+}
+
+em {
+  font-size: small;
 }
