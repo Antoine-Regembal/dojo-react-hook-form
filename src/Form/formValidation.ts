@@ -5,7 +5,7 @@ import {
 	IFieldValidationRules
 } from "./Form.types";
 
-const fieldsValidationRules = {
+export const fieldsValidationRules = {
 	firstname: {
 		required: true
 	},
@@ -58,13 +58,13 @@ const removeFieldError = (
 
 const isFieldValueEmpty = (fieldValue: string) => fieldValue === undefined || fieldValue === null || fieldValue === "";
 
-const validateFieldRules = (
+export const validateFieldRules = (
 	field: string,
 	value: string,
 	fieldValidationRules: IFieldValidationRules,
 	fieldErrors: string[],
 	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>,
-	formValues: IInitialFormValues
+	formValues?: IInitialFormValues
 ) => {
 	Object.entries(fieldValidationRules).forEach(([ruleName, ruleValue]) => {
 		switch (ruleName) {
@@ -81,7 +81,7 @@ const validateFieldRules = (
 				: removeFieldError(setFormErrors, field, "Invalid format");
 			break;
 		case "equalsTo":
-			!(value === formValues[ruleValue as keyof IInitialFormValues])
+			!(value === formValues?.[ruleValue as keyof IInitialFormValues])
 				? addFieldError(setFormErrors, field, "Does not match")
 				: removeFieldError(setFormErrors, field, "Does not match");
 			break;

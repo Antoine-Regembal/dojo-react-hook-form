@@ -3,7 +3,7 @@ import "./Form.scss";
 
 import {DispatchFormValue, FieldValueUpdate, IInitialFormValues, IFormErrors} from "./Form.types";
 
-import {validateForm} from "./formValidation";
+import {validateFieldRules, validateForm, fieldsValidationRules} from "./formValidation";
 
 export const Form = () => {
 	const dispatchFormValue = (state: IInitialFormValues, fieldValueUpdate: FieldValueUpdate) => {
@@ -18,7 +18,6 @@ export const Form = () => {
 			confirmEmail: ""
 		}
 	);
-
 
 	const [formErrors, setFormErrors] = useState<IFormErrors>({
 		firstname: [],
@@ -43,6 +42,13 @@ export const Form = () => {
 					placeholder="Firstname"
 					type="text"
 					value={formValues.firstname}
+					onBlur={() => validateFieldRules(
+						"firstname",
+						formValues.firstname,
+						fieldsValidationRules.firstname,
+						formErrors.firstname,
+						setFormErrors
+					)}
 					onChange={e => setFormValues({field: "firstname", value: e.target.value})}/>
 				<em className="form__error">{formErrors.firstname.join(" - ")}</em>
 			</div>
@@ -54,6 +60,13 @@ export const Form = () => {
 					placeholder="Lastname"
 					type="text"
 					value={formValues.lastname}
+					onBlur={() => validateFieldRules(
+						"lastname",
+						formValues.lastname,
+						fieldsValidationRules.lastname,
+						formErrors.lastname,
+						setFormErrors
+					)}
 					onChange={e => setFormValues({field: "lastname", value: e.target.value})}/>
 				<em className="form__error">{formErrors.lastname.join(" - ")}</em>
 			</div>
@@ -65,6 +78,13 @@ export const Form = () => {
 					placeholder="Email"
 					type="text"
 					value={formValues.email}
+					onBlur={() => validateFieldRules(
+						"email",
+						formValues.email,
+						fieldsValidationRules.email,
+						formErrors.email,
+						setFormErrors
+					)}
 					onChange={e => setFormValues({field: "email", value: e.target.value})}/>
 				<em className="form__error">{formErrors.email.join(" - ")}</em>
 			</div>
@@ -76,6 +96,14 @@ export const Form = () => {
 					placeholder="Confirm email"
 					type="text"
 					value={formValues.confirmEmail}
+					onBlur={() => validateFieldRules(
+						"confirmEmail",
+						formValues.confirmEmail,
+						fieldsValidationRules.confirmEmail,
+						formErrors.confirmEmail,
+						setFormErrors,
+						formValues
+					)}
 					onChange={e => setFormValues({field: "confirmEmail", value: e.target.value})}/>
 				<em className="form__error">{formErrors.confirmEmail.join(" - ")}</em>
 			</div>
