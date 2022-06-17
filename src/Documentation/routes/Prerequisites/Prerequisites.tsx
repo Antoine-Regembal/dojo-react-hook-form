@@ -3,6 +3,12 @@ export const Prerequisites = () => (
 		<section>
 			<h2>Prerequisites before starting the exercises</h2>
 			<section>
+				<h3>Required packages version to run app and tests</h3>
+				<ul>
+					<li><a href="https://nodejs.org/en/" target="_blank" rel="norefferer noreferrer">node at version 18.0.0 or more</a></li>
+				</ul>
+			</section>
+			<section>
 				<h3>Explore a little bit the react-hook-form documentation</h3>
 				<p>
 					To understand a little more on what this DOJO is about, explore a little bit{" "}
