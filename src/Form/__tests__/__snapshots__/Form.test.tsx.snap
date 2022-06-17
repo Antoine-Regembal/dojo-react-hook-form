@@ -23,6 +23,7 @@ exports[`Form > snapshots > should match empty form 1`] = `
       />
       <em
         class="form__error"
+        role="alert"
       />
     </div>
     <div
@@ -43,6 +44,7 @@ exports[`Form > snapshots > should match empty form 1`] = `
       />
       <em
         class="form__error"
+        role="alert"
       />
     </div>
     <div
@@ -63,6 +65,7 @@ exports[`Form > snapshots > should match empty form 1`] = `
       />
       <em
         class="form__error"
+        role="alert"
       />
     </div>
     <div
@@ -83,6 +86,7 @@ exports[`Form > snapshots > should match empty form 1`] = `
       />
       <em
         class="form__error"
+        role="alert"
       />
     </div>
     <button

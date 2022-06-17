@@ -62,7 +62,6 @@ export const validateFieldRules = (
 	field: string,
 	value: string,
 	fieldValidationRules: IFieldValidationRules,
-	fieldErrors: string[],
 	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>,
 	formValues?: IInitialFormValues
 ) => {
@@ -103,7 +102,6 @@ export const validateForm = (
 			field,
 			value,
 			fieldValidationRules,
-			formErrors[field as keyof IFormErrors],
 			setFormErrors,
 			formValues
 		);

@@ -46,11 +46,10 @@ export const Form = () => {
 						"firstname",
 						formValues.firstname,
 						fieldsValidationRules.firstname,
-						formErrors.firstname,
 						setFormErrors
 					)}
 					onChange={e => setFormValues({field: "firstname", value: e.target.value})}/>
-				<em className="form__error">{formErrors.firstname.join(" - ")}</em>
+				<em role="alert" className="form__error">{formErrors.firstname.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="lastname">Lastname</label>
@@ -64,11 +63,10 @@ export const Form = () => {
 						"lastname",
 						formValues.lastname,
 						fieldsValidationRules.lastname,
-						formErrors.lastname,
 						setFormErrors
 					)}
 					onChange={e => setFormValues({field: "lastname", value: e.target.value})}/>
-				<em className="form__error">{formErrors.lastname.join(" - ")}</em>
+				<em role="alert" className="form__error">{formErrors.lastname.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="email">Email</label>
@@ -82,11 +80,10 @@ export const Form = () => {
 						"email",
 						formValues.email,
 						fieldsValidationRules.email,
-						formErrors.email,
 						setFormErrors
 					)}
 					onChange={e => setFormValues({field: "email", value: e.target.value})}/>
-				<em className="form__error">{formErrors.email.join(" - ")}</em>
+				<em role="alert" className="form__error">{formErrors.email.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="confirmEmail">Confirm email</label>
@@ -100,12 +97,11 @@ export const Form = () => {
 						"confirmEmail",
 						formValues.confirmEmail,
 						fieldsValidationRules.confirmEmail,
-						formErrors.confirmEmail,
 						setFormErrors,
 						formValues
 					)}
 					onChange={e => setFormValues({field: "confirmEmail", value: e.target.value})}/>
-				<em className="form__error">{formErrors.confirmEmail.join(" - ")}</em>
+				<em role="alert" className="form__error">{formErrors.confirmEmail.join(" - ")}</em>
 			</div>
 			<button className="form__button" type="submit">Submit</button>
 		</form>
