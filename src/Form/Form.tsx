@@ -1,35 +1,52 @@
-import React, {useReducer, useState} from "react";
+import React, {useReducer} from "react";
 import "./Form.scss";
 
-import {DispatchFormValue, FieldValueUpdate, IInitialFormValues, IFormErrors} from "./Form.types";
+import {DispatchFormValue, FieldValueUpdate, IInitialFormValues} from "./Form.types";
 
 import {validateFieldRules, validateForm, fieldsValidationRules} from "./formValidation";
 
 export const Form = () => {
 	const dispatchFormValue = (state: IInitialFormValues, fieldValueUpdate: FieldValueUpdate) => {
-		return {...structuredClone(state), [fieldValueUpdate.field]: fieldValueUpdate.value} as IInitialFormValues;
+		const { value, errors } = state[fieldValueUpdate.field as keyof IInitialFormValues];
+
+		switch(fieldValueUpdate.action) {
+		case "valueUpdate":
+			return {...structuredClone(state), [fieldValueUpdate.field]: {errors, value: fieldValueUpdate.value}} as IInitialFormValues;
+			
+		case "errorsUpdate":
+			return {...structuredClone(state), [fieldValueUpdate.field]: {value, errors: fieldValueUpdate.value}} as IInitialFormValues;
+			
+		default:
+			break;
+		}
+		return state;
 	};
 	const [formValues, setFormValues] = useReducer<DispatchFormValue<IInitialFormValues, FieldValueUpdate>>(
 		dispatchFormValue,
 		{
-			firstname: "",
-			lastname: "",
-			email: "",
-			confirmEmail: ""
+			firstname: {
+				value: "",
+				errors: []
+			},
+			lastname: {
+				value: "",
+				errors: []
+			},
+			email: {
+				value: "",
+				errors: []
+			},
+			confirmEmail: {
+				value: "",
+				errors: []
+			}
 		}
 	);
-
-	const [formErrors, setFormErrors] = useState<IFormErrors>({
-		firstname: [],
-		lastname: [],
-		email: [],
-		confirmEmail: []
-	});
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		validateForm(formValues, formErrors, setFormErrors);
+		validateForm(formValues, setFormValues);
 	};
 
 	return (
@@ -37,71 +54,74 @@ export const Form = () => {
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="firstname">Firstname</label>
 				<input
-					className={`form__input${formErrors.firstname.length ? " form__input--error" : ""}`}
+					className={`form__input${formValues.firstname.errors.length ? " form__input--error" : ""}`}
 					id="firstname"
 					placeholder="Firstname"
 					type="text"
-					value={formValues.firstname}
+					value={formValues.firstname.value}
 					onBlur={() => validateFieldRules(
 						"firstname",
 						formValues.firstname,
 						fieldsValidationRules.firstname,
-						setFormErrors
+						setFormValues,
+						formValues
 					)}
-					onChange={e => setFormValues({field: "firstname", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formErrors.firstname.join(" - ")}</em>
+					onChange={e => setFormValues({action: "valueUpdate", field: "firstname", value: e.target.value})}/>
+				<em role="alert" className="form__error">{formValues.firstname.errors.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="lastname">Lastname</label>
 				<input
-					className={`form__input${formErrors.lastname.length ? " form__input--error" : ""}`}
+					className={`form__input${formValues.lastname.errors.length ? " form__input--error" : ""}`}
 					id="lastname"
 					placeholder="Lastname"
 					type="text"
-					value={formValues.lastname}
+					value={formValues.lastname.value}
 					onBlur={() => validateFieldRules(
 						"lastname",
 						formValues.lastname,
 						fieldsValidationRules.lastname,
-						setFormErrors
+						setFormValues,
+						formValues
 					)}
-					onChange={e => setFormValues({field: "lastname", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formErrors.lastname.join(" - ")}</em>
+					onChange={e => setFormValues({action: "valueUpdate", field: "lastname", value: e.target.value})}/>
+				<em role="alert" className="form__error">{formValues.lastname.errors.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="email">Email</label>
 				<input
-					className={`form__input${formErrors.email.length ? " form__input--error" : ""}`}
+					className={`form__input${formValues.email.errors.length ? " form__input--error" : ""}`}
 					id="email"
 					placeholder="Email"
 					type="text"
-					value={formValues.email}
+					value={formValues.email.value}
 					onBlur={() => validateFieldRules(
 						"email",
 						formValues.email,
 						fieldsValidationRules.email,
-						setFormErrors
+						setFormValues,
+						formValues
 					)}
-					onChange={e => setFormValues({field: "email", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formErrors.email.join(" - ")}</em>
+					onChange={e => setFormValues({action: "valueUpdate", field: "email", value: e.target.value})}/>
+				<em role="alert" className="form__error">{formValues.email.errors.join(" - ")}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="confirmEmail">Confirm email</label>
 				<input
-					className={`form__input${formErrors.confirmEmail.length ? " form__input--error" : ""}`}
+					className={`form__input${formValues.confirmEmail.errors.length ? " form__input--error" : ""}`}
 					id="confirmEmail"
 					placeholder="Confirm email"
 					type="text"
-					value={formValues.confirmEmail}
+					value={formValues.confirmEmail.value}
 					onBlur={() => validateFieldRules(
 						"confirmEmail",
 						formValues.confirmEmail,
 						fieldsValidationRules.confirmEmail,
-						setFormErrors,
+						setFormValues,
 						formValues
 					)}
-					onChange={e => setFormValues({field: "confirmEmail", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formErrors.confirmEmail.join(" - ")}</em>
+					onChange={e => setFormValues({action: "valueUpdate", field: "confirmEmail", value: e.target.value})}/>
+				<em role="alert" className="form__error">{formValues.confirmEmail.errors.join(" - ")}</em>
 			</div>
 			<button className="form__button" type="submit">Submit</button>
 		</form>

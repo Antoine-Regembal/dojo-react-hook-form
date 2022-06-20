@@ -1,25 +1,19 @@
 export interface FieldValueUpdate {
+    action: "valueUpdate" | "errorsUpdate";
     field: string;
-    value: string;
+    value: string | string[];
 }
 
-export interface FieldErrorsUpdate {
-    field: string;
-    value: string[];
+export interface IFieldStates {
+    value: string;
+    errors: string[]
 }
 
 export interface IInitialFormValues {
-    firstname: string,
-    lastname: string,
-    email: string,
-    confirmEmail: string
-}
-
-export 	interface IFormErrors  {
-    firstname: string[],
-    lastname: string[],
-    email: string[],
-    confirmEmail: string[]
+    firstname: IFieldStates;
+    lastname: IFieldStates;
+    email: IFieldStates;
+    confirmEmail: IFieldStates
 }
 
 export interface IFieldValidationRules {

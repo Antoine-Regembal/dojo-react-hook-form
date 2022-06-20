@@ -1,8 +1,9 @@
 import React from "react";
 import {
-	IFormErrors,
 	IInitialFormValues,
-	IFieldValidationRules
+	IFieldValidationRules,
+	FieldValueUpdate,
+	IFieldStates
 } from "./Form.types";
 
 export const fieldsValidationRules = {
@@ -22,87 +23,43 @@ export const fieldsValidationRules = {
 	}
 };
 
-const addFieldError = (
-	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>,
-	field: string,
-	errorMessage: string
-) => {
-	setFormErrors((prevFieldsErrorsState: IFormErrors) => {
-		return {
-			...prevFieldsErrorsState,
-			[field]: [
-				...new Set([...prevFieldsErrorsState[field as keyof IFormErrors], errorMessage]),
-			],
-		};
-	});
-};
-
-const removeFieldError = (
-	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>,
-	field: string,
-	errorMessage: string
-) => {
-	setFormErrors((prevFieldsErrorsState: IFormErrors) => {
-		return {
-			...prevFieldsErrorsState,
-			[field]: [
-				...new Set([
-					...prevFieldsErrorsState[field as keyof IFormErrors].filter(
-						(currErrorMessage: string) => currErrorMessage !== errorMessage
-					),
-				]),
-			],
-		};
-	});
-};
-
 const isFieldValueEmpty = (fieldValue: string) => fieldValue === undefined || fieldValue === null || fieldValue === "";
 
 export const validateFieldRules = (
-	field: string,
-	value: string,
+	field: keyof IInitialFormValues,
+	fieldStates: IFieldStates,
 	fieldValidationRules: IFieldValidationRules,
-	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>,
-	formValues?: IInitialFormValues
+	setFormValues: React.Dispatch<FieldValueUpdate>,
+	formValues: IInitialFormValues
 ) => {
-	Object.entries(fieldValidationRules).forEach(([ruleName, ruleValue]) => {
-		switch (ruleName) {
+	const fieldErrors = Object.entries(fieldValidationRules).reduce((acc, [ruleName, ruleValue]) => {
+		switch(ruleName) {
 		case "required":
-			if (ruleValue) {
-				isFieldValueEmpty(value)
-					? addFieldError(setFormErrors, field, "Field cannot be empty")
-					: removeFieldError(setFormErrors, field, "Field cannot be empty");
-			}
-			break;
+			return (ruleValue && isFieldValueEmpty(fieldStates.value)) ? [...acc, "Field cannot be empty"] : acc;
 		case "regexValidation":
-			!value.match(ruleValue as string)
-				? addFieldError(setFormErrors, field, "Invalid format")
-				: removeFieldError(setFormErrors, field, "Invalid format");
-			break;
+			return !fieldStates.value.match(ruleValue as string) ? [...acc, "Invalid format"] : acc;
 		case "equalsTo":
-			!(value === formValues?.[ruleValue as keyof IInitialFormValues])
-				? addFieldError(setFormErrors, field, "Does not match")
-				: removeFieldError(setFormErrors, field, "Does not match");
-			break;
+			return !(fieldStates.value === formValues?.[ruleValue as keyof IInitialFormValues].value) ? [...acc, "Does not match"] : acc;
 		default:
-			break;
+			return acc;
 		}
-	});
+	}, [] as string[]);
+
+	setFormValues({action: "errorsUpdate", field, value: fieldErrors});
 };
 
 export const validateForm = (
 	formValues: IInitialFormValues,
-	formErrors: IFormErrors,
-	setFormErrors: React.Dispatch<React.SetStateAction<IFormErrors>>
+	setFormValues: React.Dispatch<FieldValueUpdate>
 ) => {
-	Object.entries(formValues).forEach(([field, value]: [field: string, value: string]) => {
+	Object.entries(formValues).forEach(([field, fieldStates]: [field: string, value: IFieldStates]) => {
 		const fieldValidationRules = fieldsValidationRules[field as keyof typeof fieldsValidationRules];
 
 		validateFieldRules(
-			field,
-			value,
+			field as keyof IInitialFormValues,
+			fieldStates,
 			fieldValidationRules,
-			setFormErrors,
+			setFormValues,
 			formValues
 		);
 	});
