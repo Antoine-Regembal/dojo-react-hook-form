@@ -4,18 +4,29 @@
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: center;
+  justify-content: center;
 
   &__list__button {
     cursor: pointer;
     padding: 0.5rem;
     text-transform: uppercase;
+    border-color: #dfdffc;
+    border-radius: 3px;
+    border-style: solid;
+    background-color: #ffffff;
+    transition: background-color border-color;
+    transition-duration: 0.3s;
 
     &--selected {
       font-weight: bold;
-      border-color: dimgrey;
+      border-color: #8e8eff;
+      border-radius: 5px;
       border-style: solid;
-      box-shadow: 1px 1px 1px 1px black;
     }
+  }
+  &__list__button:hover {
+    background-color: #8e8eff;
+    border-color: #8e8eff;
   }
   &__list:not(:first-child) {
     margin-left: 3rem;
@@ -26,7 +37,15 @@ section {
   margin: 1rem;
 }
 
-h2,h4 {
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 4rem;
+}
+
+h4 {
   text-decoration: underline;
 }
 
@@ -36,7 +55,9 @@ h3::before {
 
 section > ul {
   margin: 1rem;
-  background: ghostwhite;
+  background: #c4c4ff;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #dfdffc;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
@@ -52,8 +73,50 @@ section > ul {
 }
 
 .snippet {
-  background-color: black;
+  cursor: pointer;
+  position: relative;
+  background-color: #000000;
   padding: 1rem;
   color: white;
+  border-radius: 10px;
   font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 3px 3px #000000;
+  transition: background-color color;
+  transition-duration: 0.3s;
+}
+
+.snippet > p::before {
+  content: "click to copy to clipboard";
+  text-decoration: underline;
+  top: 0.5rem;
+  right: 0.5rem;
+  position: absolute;
+  font-weight: initial;
+  font-size: small;
+}
+
+.snippet:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.section {
+  &__title {
+    &--before-starting::before {
+      content: "🔎 ";
+    }
+    &--install::before {
+      content: "🧰 ";
+    }
+    &--tips::before {
+      content: "💡 ";
+    }
+    &--refactor-validation::before {
+      content: "✅ ";
+    }
+    &--subject::before {
+      content: "📄 ";
+    }
+  }
 }

@@ -1,7 +1,7 @@
 export const Prerequisites = () => (
 	<>
 		<section>
-			<h2>Prerequisites before starting the exercises</h2>
+			<h2 className="section__title--before-starting">Prerequisites before starting the exercises</h2>
 			<section>
 				<h3>Required packages version to run app and tests</h3>
 				<ul>
@@ -47,7 +47,7 @@ export const Prerequisites = () => (
 			</section>
 		</section>
 		<section>
-			<h2>Install the React Developer Tool</h2>
+			<h2 className="section__title--install">Install the React Developer Tool</h2>
 			<ul>
 				<li>
 					<a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank" rel="noreferrer">
