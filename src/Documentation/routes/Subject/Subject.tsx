@@ -14,6 +14,7 @@ export const Subject = () => (
 				<h3>Optional challenges</h3>
 				<p>If you want to, you can complete the initial goal with these optional ones :</p>
 				<ul>
+					<li>Persist the form state in the sessionStorage and make sure form data are retrieved and processed by react-hook-form when reloading the application page</li>
 					<li>
                         Adding a{" "}
 						<a href="https://react-hook-form.com/api/useform/#validationResolver" target="_blank" rel="noreferrer">resolver</a>{" "}
@@ -21,8 +22,7 @@ export const Subject = () => (
 						<a href="https://www.npmjs.com/package/yup" target="_blank" rel="noreferrer">Yup</a>{" "}
                         for example
 					</li>
-					<li>Persist the form state in the sessionStorage</li>
-					<li>Adding more fields with interaction between fields</li>
+					<li>Adding more fields with interaction between fields, like a checkbox that display and hide a field when clicking on it (and see how react-hook-form manage hidden fields 🤔)</li>
 				</ul>
 			</section>
 		</section>
