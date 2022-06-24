@@ -1,8 +1,5 @@
 import React, {useReducer} from "react";
-import "./Form.scss";
-
 import {DispatchFormValue, FieldValueUpdate, IInitialFormValues} from "./Form.types";
-
 import {validateFieldRules, validateForm, fieldsValidationRules} from "./formValidation";
 
 export const Form = () => {
