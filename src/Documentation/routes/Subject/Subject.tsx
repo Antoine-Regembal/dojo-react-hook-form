@@ -40,8 +40,7 @@ export const Subject = () => (
 		</section>
 		<section>
 			<h2 className="section__title--tips">Tips</h2>
-			<p>Here is a list of tips that can help you during all the refactoring process :</p>
-			<ul>
+			<ul className="tips">
 				<li>Launch tests suites during all the refactoring process to check what is working and what is not</li>
 				<li>Try to not change everything at once. That could result on a really hard time to make test passing again</li>
 				<li>
