@@ -6,9 +6,9 @@ export const DocumentationNav = ({
 	onNavLinkClick,
 	pagesLinks,
 }: DocumentationNavProps) => {
-	const isLinkSelected = (link: string, baseClass: string) =>
+	const isLinkSelected = (link: string) =>
 		sessionStorage.getItem("currentPage") === link
-			? ` ${baseClass}--selected`
+			? " nav__list__button--selected"
 			: "";
 
 	return (
@@ -23,17 +23,9 @@ export const DocumentationNav = ({
 					>
 						<button
 							type="button"
-							className={`${
-								link === "tips"
-									? `nav__list__button--tips${isLinkSelected(
-											link,
-											"nav__list__button--tips"
-									  )}`
-									: `nav__list__button${isLinkSelected(
-											link,
-											"nav__list__button"
-									  )}`
-							}`}
+							className={`nav__list__button${isLinkSelected(
+								link
+							)}`}
 						>
 							{link}
 						</button>

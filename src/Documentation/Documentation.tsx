@@ -1,13 +1,13 @@
-import {useEffect, useState} from "react";
-import {Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-import {DocumentationNav} from "./DocumentationNav";
-import {Prerequisites} from "./routes/Prerequisites";
-import {Subject} from "./routes/Subject";
+import { DocumentationNav } from "./DocumentationNav";
+import { Prerequisites } from "./routes/Prerequisites";
+import { Subject } from "./routes/Subject";
 
 import { pagesLinks } from "./documentation.json";
 import "./Documentation.scss";
-import { Tips } from "./routes/Tips";
+import { Help } from "./routes/Help";
 
 export const Documentation = () => {
 	const setCurrentPageInSessionStorage = (currentPage: string) => {
@@ -19,7 +19,9 @@ export const Documentation = () => {
 		sessionStorage.getItem("currentPage")
 			? sessionStorage.getItem("currentPage")
 			: setCurrentPageInSessionStorage(defaultPage);
-	const [currentPage, setCurrentPage] = useState(() => initSetCurrentPage("prerequisites"));
+	const [currentPage, setCurrentPage] = useState(() =>
+		initSetCurrentPage("prerequisites")
+	);
 
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -35,11 +37,17 @@ export const Documentation = () => {
 			<header>
 				<h1>DOJO : react-hook-form</h1>
 			</header>
-			<DocumentationNav onNavLinkClick={onNavLinkClick} pagesLinks={pagesLinks} />
+			<DocumentationNav
+				onNavLinkClick={onNavLinkClick}
+				pagesLinks={pagesLinks}
+			/>
 			<Routes>
-				<Route path={pagesLinks.prerequisites} element={<Prerequisites/>}/>
-				<Route path={pagesLinks.subject} element={<Subject/>}/>
-				<Route path={pagesLinks.tips} element={<Tips/>}/>
+				<Route
+					path={pagesLinks.prerequisites}
+					element={<Prerequisites />}
+				/>
+				<Route path={pagesLinks.subject} element={<Subject />} />
+				<Route path={pagesLinks.help} element={<Help />} />
 			</Routes>
 		</div>
 	);
