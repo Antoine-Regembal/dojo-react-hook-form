@@ -1,6 +1,7 @@
 {
-  "pagesLinks" : {
+  "pagesLinks": {
     "prerequisites": "prerequisites",
-    "subject": "subject"
+    "subject": "subject",
+    "tips": "tips"
   }
 }

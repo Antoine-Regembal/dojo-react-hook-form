@@ -7,6 +7,7 @@ import {Subject} from "./routes/Subject";
 
 import { pagesLinks } from "./documentation.json";
 import "./Documentation.scss";
+import { Tips } from "./routes/Tips";
 
 export const Documentation = () => {
 	const setCurrentPageInSessionStorage = (currentPage: string) => {
@@ -38,6 +39,7 @@ export const Documentation = () => {
 			<Routes>
 				<Route path={pagesLinks.prerequisites} element={<Prerequisites/>}/>
 				<Route path={pagesLinks.subject} element={<Subject/>}/>
+				<Route path={pagesLinks.tips} element={<Tips/>}/>
 			</Routes>
 		</div>
 	);
