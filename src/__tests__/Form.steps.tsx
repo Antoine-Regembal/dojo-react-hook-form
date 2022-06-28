@@ -1,14 +1,14 @@
-import { Form } from "../Form";
 import {fireEvent, render, screen, waitFor, within} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {defineFeature, loadFeature, DefineStepFunction} from "jest-cucumber";
+import { App } from "../App";
 
 const feature = loadFeature("./Form.feature", {loadRelativePath: true});
 
 describe("Form", function () {
 	const formComponentIsMounted = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^form component is mounted$/, () => {
-			render(<Form />);
+			render(<App />);
 		});
 
 	const xIsWrittenInTheYField = (defineStepFunction: DefineStepFunction) =>
@@ -18,11 +18,11 @@ describe("Form", function () {
 			fireEvent.change(fieldElement, {target: {value: value}});
 		});
 
-	const xInputIsClicked = (defineStepFunction: DefineStepFunction) =>
+	const xInputTypeAndErase = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^"(.*)" input is clicked$/, (fieldLabel: string) => {
 			const fieldElement = screen.getByLabelText(fieldLabel);
 
-			userEvent.click(fieldElement);
+			userEvent.type(fieldElement, "a{backspace}");
 		});
 
 	const formIsSubmittedByClickingXButton = (defineStepFunction: DefineStepFunction) =>
@@ -32,11 +32,11 @@ describe("Form", function () {
 			userEvent.click(submitButton);
 		});
 
-	const fieldLoseFocus = (defineStepFunction: DefineStepFunction) =>
+	const fieldBlur = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^"(.*)" field lose focus$/, (fieldLabel: string) => {
 			const fieldElement = screen.getByLabelText(fieldLabel);
 
-			fireEvent.focusOut(fieldElement);
+			fireEvent.blur(fieldElement);
 		});
 
 	const noErrorsAreDisplayed = (defineStepFunction: DefineStepFunction) =>
@@ -80,15 +80,15 @@ describe("Form", function () {
 
 		test("Quitting \"<fieldLabel>\" field with invalid empty value", ({ given, and, when, then }) => {
 			formComponentIsMounted(given);
-			xInputIsClicked(and);
-			fieldLoseFocus(when);
+			xInputTypeAndErase(and);
+			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
 		});
 
 		test("Validating email field with invalid \"<emailValue>\" value", ({ given, and, when, then }) => {
 			formComponentIsMounted(given);
 			xIsWrittenInTheYField(and);
-			fieldLoseFocus(when);
+			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
 		});
 
@@ -96,7 +96,7 @@ describe("Form", function () {
 			formComponentIsMounted(given);
 			xIsWrittenInTheYField(and);
 			xIsWrittenInTheYField(and);
-			fieldLoseFocus(when);
+			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
 		});
 	});
