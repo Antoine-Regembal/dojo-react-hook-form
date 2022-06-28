@@ -11,7 +11,7 @@ Feature: Form
     When form is submitted by clicking "Submit" button
     Then no error messages are displayed
 
-  Scenario: Submitting an invalid form
+  Scenario: Submitting an invalid form with empty fields
     When form is submitted by clicking "Submit" button
     Then the "Firstname" field have the "Field cannot be empty" error messages
     And the "Lastname" field have the "Field cannot be empty" error messages
@@ -42,13 +42,8 @@ Feature: Form
       | foo@bar    | Invalid format |
       | foo@bar.   | Invalid format |
 
-  Scenario Outline: Validating invalid confirm email field with "<confirmEmailValue>" and "<emailValue>" value for email field
-    And "<emailValue>" is written in the "Email" field
-    And "<confirmEmailValue>" is written in the "Confirm email" field
+  Scenario: Validating invalid confirm email field with "foor.bar@email.com" and "foo.bar@email.com" value for email field
+    And "foo.bar@email.com" is written in the "Email" field
+    And "foor.bar@email.com" is written in the "Confirm email" field
     When "Confirm email" field lose focus
-    Then the "Confirm email" field have the "<errorMessages>" error messages
-
-    Examples:
-      | emailValue         | confirmEmailValue | errorMessages  |
-      | foor.bar@email.com | foo.bar@email.com | Does not match |
-      | foo.bar@email.com  | foo.bar@email.com |                |
+    Then the "Confirm email" field have the "Does not match" error messages

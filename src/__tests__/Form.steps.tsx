@@ -69,7 +69,7 @@ describe("Form", function () {
 			noErrorsAreDisplayed(then);
 		});
 
-		test("Submitting an invalid form", ({ given, when, then, and }) => {
+		test("Submitting an invalid form with empty fields", ({ given, when, then, and }) => {
 			formComponentIsMounted(given);
 			formIsSubmittedByClickingXButton(when);
 			theXFieldHaveTheYErrorMessages(then);
@@ -92,7 +92,7 @@ describe("Form", function () {
 			theXFieldHaveTheYErrorMessages(then);
 		});
 
-		test("Validating invalid confirm email field with \"<confirmEmailValue>\" and \"<emailValue>\" value for email field", ({ given, and, when, then }) => {
+		test("Validating invalid confirm email field with \"foor.bar@email.com\" and \"foo.bar@email.com\" value for email field", ({ given, and, when, then }) => {
 			formComponentIsMounted(given);
 			xIsWrittenInTheYField(and);
 			xIsWrittenInTheYField(and);
