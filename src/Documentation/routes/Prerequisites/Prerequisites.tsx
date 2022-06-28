@@ -3,9 +3,9 @@ export const Prerequisites = () => (
 		<section>
 			<h2 className="section__title--before-starting">Prerequisites before starting the exercises</h2>
 			<section>
-				<h3>Required packages version to run app and tests</h3>
+				<h3>Required packages to run app and tests</h3>
 				<ul>
-					<li><a href="https://nodejs.org/en/" target="_blank" rel="norefferer noreferrer">node at version 18.0.0 or more</a></li>
+					<li><a href="https://docs.volta.sh/guide/getting-started" target="_blank" rel="norefferer noreferrer">Volta for running the required node version (reboot required)</a></li>
 				</ul>
 			</section>
 			<section>
