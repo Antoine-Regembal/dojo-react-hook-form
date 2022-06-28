@@ -15,7 +15,7 @@ Feature: Form
     When form is submitted by clicking "Submit" button
     Then the "Firstname" field have the "Field cannot be empty" error messages
     And the "Lastname" field have the "Field cannot be empty" error messages
-    And the "Email" field have the "Field cannot be empty - Invalid format" error messages
+    And the "Email" field have the "Field cannot be empty" error messages
     And the "Confirm email" field have the "Field cannot be empty" error messages
 
   Scenario Outline: Quitting "<fieldLabel>" field with invalid empty value
@@ -24,11 +24,11 @@ Feature: Form
     Then the "<fieldLabel>" field have the "<errorMessages>" error messages
 
     Examples:
-      | fieldLabel    | value | errorMessages                          |
-      | Firstname     |       | Field cannot be empty                  |
-      | Lastname      |       | Field cannot be empty                  |
-      | Email         |       | Field cannot be empty - Invalid format |
-      | Confirm email |       | Field cannot be empty                  |
+      | fieldLabel    | value | errorMessages         |
+      | Firstname     |       | Field cannot be empty |
+      | Lastname      |       | Field cannot be empty |
+      | Email         |       | Field cannot be empty |
+      | Confirm email |       | Field cannot be empty |
 
   Scenario Outline: Validating email field with invalid "<emailValue>" value
     And "<emailValue>" is written in the "Email" field
@@ -41,7 +41,6 @@ Feature: Form
       | foo@       | Invalid format |
       | foo@bar    | Invalid format |
       | foo@bar.   | Invalid format |
-      | foo@bar.x  | Invalid format |
 
   Scenario Outline: Validating invalid confirm email field with "<confirmEmailValue>" and "<emailValue>" value for email field
     And "<emailValue>" is written in the "Email" field
@@ -50,6 +49,6 @@ Feature: Form
     Then the "Confirm email" field have the "<errorMessages>" error messages
 
     Examples:
-      | confirmEmailValue  | emailValue         | errorMessages                          |
-      |                    | foor.bar@email.com | Field cannot be empty - Does not match |
-      | foor.bar@email.com |                    | Does not match                         |
+      | emailValue         | confirmEmailValue | errorMessages  |
+      | foor.bar@email.com | foo.bar@email.com | Does not match |
+      | foo.bar@email.com  | foo.bar@email.com |                |

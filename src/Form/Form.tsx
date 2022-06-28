@@ -1,8 +1,5 @@
 import React, {useReducer} from "react";
-import "./Form.scss";
-
 import {DispatchFormValue, FieldValueUpdate, IInitialFormValues} from "./Form.types";
-
 import {validateFieldRules, validateForm, fieldsValidationRules} from "./formValidation";
 
 export const Form = () => {
@@ -67,7 +64,7 @@ export const Form = () => {
 						formValues
 					)}
 					onChange={e => setFormValues({action: "valueUpdate", field: "firstname", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formValues.firstname.errors.join(" - ")}</em>
+				<em role="alert" className="form__error">{formValues.firstname.errors?.[0]}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="lastname">Lastname</label>
@@ -85,7 +82,7 @@ export const Form = () => {
 						formValues
 					)}
 					onChange={e => setFormValues({action: "valueUpdate", field: "lastname", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formValues.lastname.errors.join(" - ")}</em>
+				<em role="alert" className="form__error">{formValues.lastname.errors?.[0]}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="email">Email</label>
@@ -103,7 +100,7 @@ export const Form = () => {
 						formValues
 					)}
 					onChange={e => setFormValues({action: "valueUpdate", field: "email", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formValues.email.errors.join(" - ")}</em>
+				<em role="alert" className="form__error">{formValues.email.errors?.[0]}</em>
 			</div>
 			<div className="input-wrapper">
 				<label className="form__label form__label--required" htmlFor="confirmEmail">Confirm email</label>
@@ -121,7 +118,7 @@ export const Form = () => {
 						formValues
 					)}
 					onChange={e => setFormValues({action: "valueUpdate", field: "confirmEmail", value: e.target.value})}/>
-				<em role="alert" className="form__error">{formValues.confirmEmail.errors.join(" - ")}</em>
+				<em role="alert" className="form__error">{formValues.confirmEmail.errors?.[0]}</em>
 			</div>
 			<button className="form__button" type="submit">Submit</button>
 		</form>
