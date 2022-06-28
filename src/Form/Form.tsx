@@ -1,8 +1,13 @@
 import React, {useReducer} from "react";
+//import {useForm} from "react-hook-form";
 import {DispatchFormValue, FieldValueUpdate, IInitialFormValues} from "./Form.types";
 import {validateFieldRules, validateForm, fieldsValidationRules} from "./formValidation";
 
 export const Form = () => {
+	/*const { register, formState } = useForm({
+		mode: "all"
+	});*/
+
 	const dispatchFormValue = (state: IInitialFormValues, fieldValueUpdate: FieldValueUpdate) => {
 		const { value, errors } = state[fieldValueUpdate.field as keyof IInitialFormValues];
 
@@ -55,6 +60,7 @@ export const Form = () => {
 					id="firstname"
 					placeholder="Firstname"
 					type="text"
+					//{...register("firstname"), { /*maybe you should add some logic here...*/}}
 					value={formValues.firstname.value}
 					onBlur={() => validateFieldRules(
 						"firstname",
