@@ -57,5 +57,51 @@ export const Help = () => (
 				</p>
 			</section>
 		</section>
+		<section>
+			<h2 className="section__title--refactor-validation">How can I know the form validation rules ?</h2>
+			<section>
+				<h3>Check the formValidation.ts file</h3>
+				<p>
+					This file contains the original validation logic without react-hook-form.
+				</p>
+				<p>It exports :</p>
+				<ul className="block">
+					<li>
+						A validateForm function that is called when the form is submitted when clicking the Submit button.
+						It then calls the validateFieldRules for each fields registered in the useReducer hook
+					</li>
+					<li>
+						A validateFieldRules function that is called whenever a field is validated.
+						For each fields validation rules, the field value is tested with that rule
+						and if the value does not meet the rule requirements and error is registered
+					</li>
+					<li>
+						A fieldsValidationRules object that defines validation requirements for each fields
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3 className="section__title--tips">Tips</h3>
+				<ul className="block tips">
+					<li>
+						At the end of the refactoring process, this file becomes useless as react-hook-form should
+						now manage fields state, fields errors and fields validation for you (and that&apos;s awesome 😄)
+					</li>
+					<li>You can check the fieldsValidationRules object to know the fields validation requirements</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Check the gherkins scenarios</h3>
+				<p>
+					Gherkin scenarios allows to define the expected behaviors from a component or every other part of an application.
+					In the case of this DOJO, differents scenarios have been writtend to define the expected behaviors of the form
+					component for it&apos;s validation. These scenarios are then used to run tests suites and to check if your
+					refactoring did break the original form behavior or not.
+				</p>
+				<p>
+					You can find the gherkin scenarios in the Form.feature file, inside the __tests__ folder.
+				</p>
+			</section>
+		</section>
 	</>
 );
