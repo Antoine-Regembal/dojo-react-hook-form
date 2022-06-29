@@ -82,31 +82,31 @@ export const Subject = () => (
 					<p>npm run test</p>
 				</div>
 			</section>
-		</section>
-		<section>
-			<h2 className="section__title--tips">Tips</h2>
-			<ul className="block tips">
-				<li>
-					Launch tests suites during all the refactoring process to
-					check what is working and what is not
-				</li>
-				<li>
-					Try to not change everything at once. That could result on a
-					really hard time to make test passing again
-				</li>
-				<li>
-					Do not modify existing tests, they make sure the form is
-					working and confirm if your refactoring is working too.
-					However if you are adding more fields for the opitonal
-					challenges make sure to add needed tests to cover the new
-					cases
-				</li>
-				<li>
-					Use the React Developer Tool to see what is happening inside
-					your form while refactoring
-				</li>
-				<li>Read the documentation</li>
-			</ul>
+			<section>
+				<h3 className="section__title--tips">Tips</h3>
+				<ul className="block tips">
+					<li>
+						Launch tests suites during all the refactoring process to
+						check what is working and what is not
+					</li>
+					<li>
+						Try to not change everything at once. That could result on a
+						really hard time to make test passing again
+					</li>
+					<li>
+						Do not modify existing tests, they make sure the form is
+						working and confirm if your refactoring is working too.
+						However if you are adding more fields for the opitonal
+						challenges make sure to add needed tests to cover the new
+						cases
+					</li>
+					<li>
+						Use the React Developer Tool to see what is happening inside
+						your form while refactoring
+					</li>
+					<li>Read the documentation</li>
+				</ul>
+			</section>
 		</section>
 	</>
 );

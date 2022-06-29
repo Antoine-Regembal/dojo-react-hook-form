@@ -115,40 +115,40 @@ export const Prerequisites = () => (
 					</ul>
 				</section>
 			</section>
-		</section>
-		<section>
-			<h2 className="section__title--install">
+			<section>
+				<h3 className="section__title--install">
 				Install the React Developer Tool
-			</h2>
-			<ul className="block">
-				<li>
-					<a
-						href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"
-						target="_blank"
-						rel="noreferrer"
-					>
+				</h3>
+				<ul className="block">
+					<li>
+						<a
+							href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"
+							target="_blank"
+							rel="noreferrer"
+						>
 						for Chrome
-					</a>
-				</li>
-				<li>
-					<a
-						href="https://addons.mozilla.org/fr/firefox/addon/react-devtools/"
-						target="_blank"
-						rel="noreferrer"
-					>
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://addons.mozilla.org/fr/firefox/addon/react-devtools/"
+							target="_blank"
+							rel="noreferrer"
+						>
 						for Firefox
-					</a>
-				</li>
-				<li>
-					<a
-						href="https://stackoverflow.com/questions/65373114/i-want-to-add-react-devtools-to-safari-browser"
-						target="_blank"
-						rel="noreferrer"
-					>
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://stackoverflow.com/questions/65373114/i-want-to-add-react-devtools-to-safari-browser"
+							target="_blank"
+							rel="noreferrer"
+						>
 						for Safari
-					</a>
-				</li>
-			</ul>
+						</a>
+					</li>
+				</ul>
+			</section>
 		</section>
 	</>
 );
