@@ -56,12 +56,7 @@ h3::before {
 }
 
 section > ul {
-	margin: 1rem;
 	background: #c4c4ff;
-	border-radius: 5px;
-	box-shadow: 0 3px 3px #dfdffc;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
 
 	li:not(:last-child) {
 		margin-bottom: 0.5rem;
@@ -74,7 +69,16 @@ section > ul {
 	}
 }
 
-ul.tips {
+.block {
+	margin: 1rem;
+	border-radius: 5px;
+	box-shadow: 0 3px 3px #dfdffc;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-inline-start: 40px;
+}
+
+.tips {
 	background-color: #fce8b5;
 }
 
@@ -87,7 +91,7 @@ ul.tips {
 	border-radius: 10px;
 	font-weight: bold;
 	border-radius: 10px;
-	box-shadow: 0 3px 3px #000000;
+	box-shadow: 0 3px 3px #dfdffc;
 	transition: background-color color;
 	transition-duration: 0.3s;
 }
@@ -123,6 +127,9 @@ ul.tips {
 		}
 		&--subject::before {
 			content: "📄 ";
+		}
+		&--refactor::before {
+			content: "🆘 ";
 		}
 	}
 }
