@@ -60,7 +60,7 @@ export const Form = () => {
 					id="firstname"
 					placeholder="Firstname"
 					type="text"
-					//{...register("firstname"), { /*maybe you should add some logic here...*/}}
+					//{...register("firstname", { /*maybe you should add some logic here...*/})}
 					value={formValues.firstname.value}
 					onBlur={() => validateFieldRules(
 						"firstname",
