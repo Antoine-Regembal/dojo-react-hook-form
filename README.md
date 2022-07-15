@@ -24,7 +24,9 @@ Clone the repository to your local machine 💻
 git clone https://github.com/Antoine-Regembal/dojo-react-hook-form.git
 ```
 
-Install the application and dependencies (**requires node 18.0.0+ to run tests**) 🔧
+Install the application and dependencies 🔧
+
+Please make sure to use the exact same node version as the one defined in the package.json file on the "volta" object or <ins>directly use [Volta](https://volta.sh) (**recommended**) to avoid installing several node version yourself and let this tool manage them for you 🥰</ins>.
 
 ```shell
 cd dojo-react-hook-form && npm install
