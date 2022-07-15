@@ -56,6 +56,51 @@ export const Help = () => (
 					It is the same thing for the validateForm and validateFieldRules functions.
 				</p>
 			</section>
+			<section>
+				<h3>Need more help ?</h3>
+				<p>
+					If you need more help to achieve this DOJO follow the steps described below.
+					The links open documentation where you can find out how to achieve the step.
+				</p>
+				<p>
+					Also you can find &quot;correction&quot; branches in the GIT repository that adds to the form the code from every steps.
+				</p>
+				<section>
+					<h4>Manage fields with react-hook-form</h4>
+					<p>The library gives a custom hook called useForm that can take optional arguments to modify the library behavior to fit your needs.</p>
+					<p>This custom hook returns several variables and functions that you can use to manage fields, to get informations about fields or errors states, etc.</p>
+					<a href="https://react-hook-form.com/api/useform" target="_blank" rel="noreferrer">First thing you need to do is to import useForm and to call it.</a>
+					<h5 className="section__title--tips">Tips</h5>
+					<section className="tips block">
+						<p>This step should be easy as the code is already there, uncoment it 🙂</p>
+					</section>
+					<p>
+						Once you called useForm and retrieved the right variables from it, you should use some of them direcly on the form fields.
+					</p>
+					<p>
+						Keep in mind that you start from a controlled form that already has it&lsquo;s state and errors management. A field controlled with react-hook-form
+						cannot also be controlled by a useState, useReducer or wathever. You will need to remove the old form management functions to let the useForm hook managem them for you.
+					</p>
+					<p>
+						To achieve that, remove &quot;onChange&quot;, &quot;onBlur&quot;, &quot;value&quot; props and add a desctucturation of &quot;register&quot; that you retrieved from useForm hook.
+					</p>
+					<a href="https://react-hook-form.com/api/useform/register#main" target="_blank" rel="noreferrer">
+						Documentation to register. Check the &quot;Options&quot; section for field validation rules documentation.
+					</a>
+					<h5 className="section__title--tips">Tips</h5>
+					<section className="tips block">
+						<p>
+							An example of the use of register is already there, commented in the first field props.
+							It shows you that you must give to it the field name to let react-hook-form know which field is controlled with this register,
+							and also that you can give an optional object for field validation.
+						</p>
+					</section>
+					<p>
+						Once you called useForm and used it&lsquo;s properties to manage your forms fields (and removed the old props), then you form is controlled by react hook form.
+					</p>
+					<p>You can find this step completed on the &quot;correction-manage-form&quot; branch on the GIT repository.</p>
+				</section>
+			</section>
 		</section>
 		<section>
 			<h2 className="section__title--refactor-validation">How can I know the form validation rules ?</h2>
