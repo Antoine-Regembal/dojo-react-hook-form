@@ -41,19 +41,17 @@ describe("Form", function () {
 
 	const noErrorsAreDisplayed = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^no error messages are displayed$/, () => {
-			const errorsElements = screen.getAllByRole("alert");
+			const errorsElements = screen.queryAllByRole("alert");
 
-			errorsElements.forEach((errorsElement: HTMLElement) => {
-				expect(errorsElement.textContent).toBe("");
-			});
+			expect(errorsElements.length).toBe(0);
 		});
 
 	const theXFieldHaveTheYErrorMessages = (defineStepFunction: DefineStepFunction) =>
-		defineStepFunction(/^the "(.*)" field have the "(.*)" error messages$/, async (fieldLabel: string, errorMessages: string) => {
-			const formElement = screen.getByLabelText(fieldLabel).parentElement as HTMLInputElement;
-			const errorElement = within(formElement).getByRole("alert");
-			
+		defineStepFunction(/^the "(.*)" field have the "(.*)" error messages$/, async (fieldLabel: string, errorMessages: string) => {	
 			await waitFor(() => {
+				const formElement = screen.getByLabelText(fieldLabel).parentElement as HTMLInputElement;
+				const errorElement = within(formElement).getByRole("alert");
+	
 				expect(errorElement.textContent).toEqual(errorMessages);
 			});
 		});
