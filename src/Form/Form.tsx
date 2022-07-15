@@ -1,8 +1,30 @@
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const Form = () => {
-  const { register, formState, handleSubmit, getValues } = useForm({
+  const yupValidationSchema = yup.object().shape({
+    firstname: yup.string().required("Field cannot be empty"),
+    lastname: yup.string().required("Field cannot be empty"),
+    email: yup
+      .string()
+      .required("Field cannot be empty")
+      .email("Invalid format"),
+    confirmEmail: yup
+      .string()
+      .required("Field cannot be empty")
+      .oneOf([yup.ref("email")], "Does not match"),
+  });
+
+  const { register, formState, handleSubmit } = useForm({
     mode: "onBlur",
+    resolver: yupResolver(yupValidationSchema),
+    defaultValues: {
+      firstname: "",
+      lastname: "",
+      email: "",
+      confirmEmail: "",
+    },
   });
 
   return (
@@ -21,7 +43,7 @@ export const Form = () => {
           id="firstname"
           placeholder="Firstname"
           type="text"
-          {...register("firstname", { required: "Field cannot be empty" })}
+          {...register("firstname")}
         />
         {formState.errors.firstname && (
           <em role="alert" className="form__error">
@@ -40,7 +62,7 @@ export const Form = () => {
           id="lastname"
           placeholder="Lastname"
           type="text"
-          {...register("lastname", { required: "Field cannot be empty" })}
+          {...register("lastname")}
         />
         {formState.errors.lastname && (
           <em role="alert" className="form__error">
@@ -59,13 +81,7 @@ export const Form = () => {
           id="email"
           placeholder="Email"
           type="text"
-          {...register("email", {
-            required: "Field cannot be empty",
-            pattern: {
-              value: new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$"),
-              message: "Invalid format",
-            },
-          })}
+          {...register("email")}
         />
         {formState.errors.email && (
           <em role="alert" className="form__error">
@@ -87,11 +103,7 @@ export const Form = () => {
           id="confirmEmail"
           placeholder="Confirm email"
           type="text"
-          {...register("confirmEmail", {
-            required: "Field cannot be empty",
-            validate: (value: string) =>
-              value === getValues().email || "Does not match",
-          })}
+          {...register("confirmEmail")}
         />
         {formState.errors.confirmEmail && (
           <em role="alert" className="form__error">
