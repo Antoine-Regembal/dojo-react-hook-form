@@ -46,6 +46,13 @@ describe("Form", function () {
 			expect(errorsElements.length).toBe(0);
 		});
 
+	const theXFieldBordersAppearRed = (defineStepFunction: DefineStepFunction) =>
+		defineStepFunction(/^the "(.*)" field borders appear red$/, (fieldlabel: string) => {
+			const fieldElement = screen.getByLabelText(fieldlabel);
+
+			expect(fieldElement).toHaveClass("form__input--error");
+		});
+
 	const theXFieldHaveTheYErrorMessages = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^the "(.*)" field have the "(.*)" error message$/, async (fieldLabel: string, errorMessages: string) => {	
 			await waitFor(() => {
@@ -71,9 +78,13 @@ describe("Form", function () {
 			formComponentIsMounted(given);
 			formIsSubmittedByClickingXButton(when);
 			theXFieldHaveTheYErrorMessages(then);
+			theXFieldBordersAppearRed(and);
 			theXFieldHaveTheYErrorMessages(and);
+			theXFieldBordersAppearRed(and);
 			theXFieldHaveTheYErrorMessages(and);
+			theXFieldBordersAppearRed(and);
 			theXFieldHaveTheYErrorMessages(and);
+			theXFieldBordersAppearRed(and);
 		});
 
 		test("Quitting \"<fieldLabel>\" field with invalid empty value", ({ given, and, when, then }) => {
@@ -81,6 +92,7 @@ describe("Form", function () {
 			xInputTypeAndErase(and);
 			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
+			theXFieldBordersAppearRed(and);
 		});
 
 		test("Validating email field with invalid \"<emailValue>\" value", ({ given, and, when, then }) => {
@@ -88,6 +100,7 @@ describe("Form", function () {
 			xIsWrittenInTheYField(and);
 			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
+			theXFieldBordersAppearRed(and);
 		});
 
 		test("Validating invalid confirm email field with \"foor.bar@email.com\" and \"foo.bar@email.com\" value for email field", ({ given, and, when, then }) => {
@@ -96,6 +109,7 @@ describe("Form", function () {
 			xIsWrittenInTheYField(and);
 			fieldBlur(when);
 			theXFieldHaveTheYErrorMessages(then);
+			theXFieldBordersAppearRed(and);
 		});
 	});
 });

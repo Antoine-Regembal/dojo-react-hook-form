@@ -14,14 +14,19 @@ Feature: Form
   Scenario: Submitting an invalid form with empty fields
     When form is submitted by clicking "Submit" button
     Then the "Firstname" field have the "Field cannot be empty" error message
+    And the "Firstname" field borders appear red
     And the "Lastname" field have the "Field cannot be empty" error message
+    And the "Lastname" field borders appear red
     And the "Email" field have the "Field cannot be empty" error message
+    And the "Email" field borders appear red
     And the "Confirm email" field have the "Field cannot be empty" error message
+    And the "Confirm email" field borders appear red
 
   Scenario Outline: Quitting "<fieldLabel>" field with invalid empty value
     And "<fieldLabel>" input is clicked
     When "<fieldLabel>" field lose focus
     Then the "<fieldLabel>" field have the "<errorMessages>" error message
+    And the "<fieldLabel>" field borders appear red
 
     Examples:
       | fieldLabel    | value | errorMessages         |
@@ -34,6 +39,7 @@ Feature: Form
     And "<emailValue>" is written in the "Email" field
     When "Email" field lose focus
     Then the "Email" field have the "<errorMessages>" error message
+    And the "Email" field borders appear red
 
     Examples:
       | emailValue | errorMessages  |
@@ -47,3 +53,4 @@ Feature: Form
     And "foor.bar@email.com" is written in the "Confirm email" field
     When "Confirm email" field lose focus
     Then the "Confirm email" field have the "Does not match" error message
+    And the "Confirm email" field borders appear red
