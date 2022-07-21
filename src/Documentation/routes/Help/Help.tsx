@@ -91,14 +91,14 @@ export const Help = () => (
 					<section className="tips block">
 						<p>
 							An example of the use of register is already there, commented in the first field props.
-							It shows you that you must give to it the field name to let react-hook-form know which field is controlled with this register,
-							and also that you can give an optional object for field validation.
+							It shows you that you must give to it the field name to let react-hook-form know which
+							field is controlled with this particular register destructuration and also that you can
+							give an optional object for field validation.
 						</p>
 					</section>
 					<p>
 						Once you called useForm and used it&lsquo;s properties to manage your forms fields (and removed the old props), then you form is controlled by react hook form.
 					</p>
-					<p>You can find this step completed on the &quot;correction-manage-form&quot; branch on the GIT repository.</p>
 				</section>
 				<section>
 					<h4>Validate fields and send form data</h4>
@@ -132,6 +132,57 @@ export const Help = () => (
 							In this case, the callback function you give to handleSubmit is NOT called. Your form must be valid to be sent
 						</li>
 					</ul>
+				</section>
+				<section>
+					<h3 className="section__title--tips">Tips</h3>
+					<p className="block tips">
+						You can find the &quot;Manage fields with react-hook-form&quot; and &quot;Validate fields and send form data&quot; steps completed on the{" "}
+						<a href="https://github.com/Antoine-Regembal/dojo-react-hook-form/tree/correction-manage-form" target="_blank" rel="noreferrer">
+							&quot;correction-manage-form&quot; branch in the GIT repository.
+						</a>
+						{" "}Check{" "}
+						<a href="https://github.com/Antoine-Regembal/dojo-react-hook-form/commit/74c4f3ec00795bec764fb9ec2a23497243765e5d?diff=unified" target="_blank" rel="noreferrer">
+							this commit
+						</a>
+						{" "}to see how react-hook-form helped to reduce code complexity 😃 !
+					</p>
+				</section>
+				<section>
+					<h4>Adding Yup as a resolver to manage fields validation rules</h4>
+					<p>
+						<a href="https://www.npmjs.com/package/yup" target="_blank" rel="noreferrer">
+							Yup
+						</a>
+						{" "}can be used as a resolver in the useForm settings as you can see in{" "}
+						<a href="https://react-hook-form.com/ts#ResolverRef" target="_blank" rel="noreferrer">
+							this part of the react-hook-form documentation.
+						</a>
+					</p>
+					<p>
+						To make it short, you can define a Yup validation schema that will create an object.
+						In this object you may specify entries for each fields that needs to be validated.
+						The entries keys must match the field name registered in react-hook-form.
+					</p>
+					<p>
+						Then you can specify on the useForm settings to use this validation schema as a resolver,
+						and react-hook-form will automatically use this schema for fields validation.
+						This means that you can remove the previous validation rules you defined for each fields
+						as react-hook-form will now use the resolver validation schema.
+					</p>
+				</section>
+				<section>
+					<h3 className="section__title--tips">Tips</h3>
+					<p className="block tips">
+						You can find the &quot;Adding Yup as a resolver to manage fields validation rules&quot; step completed on the{" "}
+						<a href="https://github.com/Antoine-Regembal/dojo-react-hook-form/compare/main...correction-validation-yup" target="_blank" rel="noreferrer">
+							&quot;correction-validation-yup&quot; branch in the GIT repository.
+						</a>
+						{" "}Check{" "}
+						<a href="https://github.com/Antoine-Regembal/dojo-react-hook-form/commit/8daa77be29bb2e75aaec5985547dfa5e0cf22f4d" target="_blank" rel="noreferrer">
+							this commit
+						</a>
+						{" "}to see how Yup can be used as a resolver for react-hook-form.
+					</p>
 				</section>
 			</section>
 		</section>
