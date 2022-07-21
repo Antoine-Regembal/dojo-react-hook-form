@@ -1,14 +1,14 @@
 import {fireEvent, render, screen, waitFor, within} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {defineFeature, loadFeature, DefineStepFunction} from "jest-cucumber";
-import { App } from "../App";
+import { Form } from "../Form";
 
 const feature = loadFeature("./Form.feature", {loadRelativePath: true});
 
 describe("Form", function () {
 	const formComponentIsMounted = (defineStepFunction: DefineStepFunction) =>
 		defineStepFunction(/^form component is mounted$/, () => {
-			render(<App />);
+			render(<Form />);
 		});
 
 	const xIsWrittenInTheYField = (defineStepFunction: DefineStepFunction) =>
