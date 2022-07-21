@@ -100,6 +100,39 @@ export const Help = () => (
 					</p>
 					<p>You can find this step completed on the &quot;correction-manage-form&quot; branch on the GIT repository.</p>
 				</section>
+				<section>
+					<h4>Validate fields and send form data</h4>
+					<p>
+						If you followed the steps above, then your form should now be managed by react-hook-form.
+					</p>
+					<p>
+						Depending on the settings you gave to the useForm hook
+						(<a href="https://react-hook-form.com/api/useform" target="_blank" rel="noreferrer" >
+							check the documentation to know how change useForm behavior on your needs
+						</a>) the register function you gave in props to your fields allows react-hook-form to validate them with the
+						validation restrictions you defined. You may notice that your fields already are validated when you trigger the &quot;onBlur&quot; event
+						by leaving the fields focus.
+					</p>
+					<p>
+						But you may also notice, depending on the code you produced during the DOJO, that the global form validation isn&lsquo;t triggered
+						when clicking on the &quot;Submit&quot; button.
+					</p>
+					<p>
+						This is because the function called with the &quot;onSubmit&quot; action of the form was previoulsy coded and is now legacy
+						(meaning that it does not use react-hook-form as we want to).
+						Fortunately, useForm hook also gives us a function that fulfill this role : <a href="https://react-hook-form.com/api/useform/handlesubmit" target="_blank" rel="noreferrer" >the handleSubmit function</a>.
+					</p>
+					<p>
+						The &quot;handleSubmit&quot; fonction from useForm hook validate all registered fields from your form, and different cases can occur :
+					</p>
+					<ul className="block">
+						<li>If their is no form errors : the callback function you give to handleSubmit is called (like a post method to send form data to API for example)</li>
+						<li>
+							If their are form errors : form validation is triggered and the form state is updated with errors.
+							In this case, the callback function you give to handleSubmit is NOT called. Your form must be valid to be sent
+						</li>
+					</ul>
+				</section>
 			</section>
 		</section>
 		<section>
