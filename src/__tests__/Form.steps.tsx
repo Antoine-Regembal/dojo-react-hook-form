@@ -47,7 +47,7 @@ describe("Form", function () {
 		});
 
 	const theXFieldHaveTheYErrorMessages = (defineStepFunction: DefineStepFunction) =>
-		defineStepFunction(/^the "(.*)" field have the "(.*)" error messages$/, async (fieldLabel: string, errorMessages: string) => {	
+		defineStepFunction(/^the "(.*)" field have the "(.*)" error message$/, async (fieldLabel: string, errorMessages: string) => {	
 			await waitFor(() => {
 				const formElement = screen.getByLabelText(fieldLabel).parentElement as HTMLInputElement;
 				const errorElement = within(formElement).getByRole("alert");
