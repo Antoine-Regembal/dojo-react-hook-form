@@ -1,6 +1,6 @@
 export interface DocumentationNavProps {
-    onNavLinkClick: (currentPage: string) => void;
-    pagesLinks: {
-        [key: string]: string;
-    };
+  onNavLinkClick: (currentPage: string) => void;
+  pagesLinks: {
+    [key: string]: string;
+  };
 }

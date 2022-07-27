@@ -4,14 +4,14 @@ import { Form } from "./Form";
 import "./App.scss";
 
 export const App = () => (
-	<BrowserRouter>
-		<div className="grid">
-			<div className="area area--documentation">
-				<Documentation />
-			</div>
-			<div className="area area--form">
-				<Form />
-			</div>
-		</div>
-	</BrowserRouter>
+  <BrowserRouter>
+    <div className="grid">
+      <div className="area area--documentation">
+        <Documentation />
+      </div>
+      <div className="area area--form">
+        <Form />
+      </div>
+    </div>
+  </BrowserRouter>
 );
