@@ -25,16 +25,16 @@
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
-    "@vitejs/plugin-react": "^1.3.0",
+    "@vitejs/plugin-react": "^2.0.0",
     "eslint": "^8.17.0",
     "eslint-plugin-react": "^7.30.0",
     "jest-cucumber": "^3.0.1",
-    "jsdom": "^19.0.0",
+    "jsdom": "^20.0.0",
     "sass": "^1.52.2",
     "specflow-emulator": "^1.0.4",
     "typescript": "^4.6.3",
-    "vite": "^2.9.9",
-    "vitest": "^0.13.1"
+    "vite": "^3.0.4",
+    "vitest": "^0.19.1"
   },
   "volta": {
     "node": "18.4.0"
